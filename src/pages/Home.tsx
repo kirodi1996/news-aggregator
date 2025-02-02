@@ -39,17 +39,14 @@ const Home = () => {
 
   useEffect(() => {
 
-    // Clear the previous timeout and set a new one
     if (debounceRef.current) {
       clearTimeout(debounceRef.current);
     }
 
-    // Set a new debounce timeout
-    debounceRef.current = setTimeout(() => {
+   debounceRef.current = setTimeout(() => {
         getNews();
     }, 300);
 
-    // Clean up the timeout on unmount or query change
     return () => {
       if (debounceRef.current) {
         clearTimeout(debounceRef.current);
@@ -76,7 +73,6 @@ const Home = () => {
     <div className="max-w-6xl mx-auto px-4 py-6 mt-16">
     <h1 className="text-3xl font-bold text-center mb-6">Search News</h1>
 
-    {/* Search Input */}
     <input
       type="text"
       placeholder="Search articles..."
@@ -85,9 +81,7 @@ const Home = () => {
       className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition mb-4"
     />
 
-    {/* Filters */}
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-        {/* Preferred Categories (Checkboxes) */}
         <div>
           <h2 className="text-lg font-semibold mb-2">Categories</h2>
           <div className="grid grid-cols-1 gap-2">
@@ -116,7 +110,6 @@ const Home = () => {
         </div>
         </div>
 
-    {/* Show Loading Spinner */}
     {loading ? (
       <div className="flex justify-center items-center py-10">
         <div className="w-10 h-10 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
